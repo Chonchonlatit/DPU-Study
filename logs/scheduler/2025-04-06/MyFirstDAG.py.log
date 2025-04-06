@@ -7346,3 +7346,10 @@ airflow.exceptions.DuplicateTaskIdFound: Task id 't1' has already been added to 
 [2025-04-06T19:28:42.892+0000] {logging_mixin.py:190} INFO - [2025-04-06T19:28:42.892+0000] {dag.py:3239} INFO - Sync 1 DAGs
 [2025-04-06T19:28:42.909+0000] {logging_mixin.py:190} INFO - [2025-04-06T19:28:42.908+0000] {dag.py:4180} INFO - Setting next_dagrun for MyFirstDAG to None, run_after=None
 [2025-04-06T19:28:42.926+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/MyFirstDAG.py took 0.079 seconds
+[2025-04-06T19:29:13.229+0000] {processor.py:186} INFO - Started process (PID=16966) to work on /opt/airflow/dags/MyFirstDAG.py
+[2025-04-06T19:29:13.229+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/MyFirstDAG.py for tasks to queue
+[2025-04-06T19:29:13.231+0000] {logging_mixin.py:190} INFO - [2025-04-06T19:29:13.231+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/MyFirstDAG.py
+[2025-04-06T19:29:13.236+0000] {processor.py:925} INFO - DAG(s) 'MyFirstDAG' retrieved from /opt/airflow/dags/MyFirstDAG.py
+[2025-04-06T19:29:13.250+0000] {logging_mixin.py:190} INFO - [2025-04-06T19:29:13.250+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-04-06T19:29:13.261+0000] {logging_mixin.py:190} INFO - [2025-04-06T19:29:13.261+0000] {dag.py:4180} INFO - Setting next_dagrun for MyFirstDAG to None, run_after=None
+[2025-04-06T19:29:13.274+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/MyFirstDAG.py took 0.049 seconds
