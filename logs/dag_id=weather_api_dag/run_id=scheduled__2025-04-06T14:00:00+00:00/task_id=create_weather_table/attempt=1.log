@@ -1,0 +1,127 @@
+[2025-04-06T19:01:35.662+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-04-06T19:01:35.765+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_api_dag.create_weather_table scheduled__2025-04-06T14:00:00+00:00 [queued]>
+[2025-04-06T19:01:35.844+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_api_dag.create_weather_table scheduled__2025-04-06T14:00:00+00:00 [queued]>
+[2025-04-06T19:01:35.845+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2025-04-06T19:01:35.972+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): create_weather_table> on 2025-04-06 14:00:00+00:00
+[2025-04-06T19:01:36.113+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_api_dag', 'create_weather_table', 'scheduled__2025-04-06T14:00:00+00:00', '--job-id', '751', '--raw', '--subdir', 'DAGS_FOLDER/weatherAPIDAG.py', '--cfg-path', '/tmp/tmple5txain']
+[2025-04-06T19:01:36.130+0000] {standard_task_runner.py:105} INFO - Job 751: Subtask create_weather_table
+[2025-04-06T19:01:36.174+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=354) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-06T19:01:36.175+0000] {standard_task_runner.py:72} INFO - Started process 429 to run task
+[2025-04-06T19:01:36.665+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_api_dag.create_weather_table scheduled__2025-04-06T14:00:00+00:00 [running]> on host ab13fcc6a433
+[2025-04-06T19:01:38.099+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='weather_api_dag' AIRFLOW_CTX_TASK_ID='create_weather_table' AIRFLOW_CTX_EXECUTION_DATE='2025-04-06T14:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-04-06T14:00:00+00:00'
+[2025-04-06T19:01:38.112+0000] {logging_mixin.py:190} INFO - Task instance is in running state
+[2025-04-06T19:01:38.114+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2025-04-06T19:01:38.115+0000] {logging_mixin.py:190} INFO - Current task name:create_weather_table state:running start_date:2025-04-06 19:01:35.771825+00:00
+[2025-04-06T19:01:38.118+0000] {logging_mixin.py:190} INFO - Dag name:weather_api_dag and current dag run status:running
+[2025-04-06T19:01:38.118+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-04-06T19:01:38.188+0000] {base.py:84} INFO - Retrieving connection 'weather_***_conn'
+[2025-04-06T19:01:38.215+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/weatherAPIDAG.py", line 38, in _create_weather_table
+    connection = pg_hook.get_conn()
+                 ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/postgres/hooks/postgres.py", line 189, in get_conn
+    self.conn = psycopg2.connect(**conn_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "db" to address: Name or service not known
+
+[2025-04-06T19:01:38.278+0000] {logging_mixin.py:190} INFO - Task instance in failure state
+[2025-04-06T19:01:38.284+0000] {logging_mixin.py:190} INFO - Task start:2025-04-06 19:01:35.771825+00:00 end:2025-04-06 19:01:38.277561+00:00 duration:2.505736
+[2025-04-06T19:01:38.286+0000] {logging_mixin.py:190} INFO - Task:<Task(PythonOperator): create_weather_table> dag:<DAG: weather_api_dag> dagrun:<DagRun weather_api_dag @ 2025-04-06 14:00:00+00:00: scheduled__2025-04-06T14:00:00+00:00, state:running, queued_at: 2025-04-06 19:01:04.531263+00:00. externally triggered: False>
+[2025-04-06T19:01:38.289+0000] {logging_mixin.py:190} INFO - Failure caused by could not translate host name "db" to address: Name or service not known
+[2025-04-06T19:01:38.290+0000] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=weather_api_dag, task_id=create_weather_table, run_id=scheduled__2025-04-06T14:00:00+00:00, execution_date=20250406T140000, start_date=20250406T190135, end_date=20250406T190138
+[2025-04-06T19:01:38.448+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-04-06T19:01:38.465+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 751 for task create_weather_table (could not translate host name "db" to address: Name or service not known
+; 429)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/weatherAPIDAG.py", line 38, in _create_weather_table
+    connection = pg_hook.get_conn()
+                 ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/postgres/hooks/postgres.py", line 189, in get_conn
+    self.conn = psycopg2.connect(**conn_args)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: could not translate host name "db" to address: Name or service not known
+
+[2025-04-06T19:01:38.648+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2025-04-06T19:01:38.806+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-06T19:01:38.839+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
