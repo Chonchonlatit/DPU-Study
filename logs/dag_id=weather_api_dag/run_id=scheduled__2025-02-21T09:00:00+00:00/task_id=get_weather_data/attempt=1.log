@@ -1,0 +1,28 @@
+[2025-04-06T07:26:25.646+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2025-04-06T07:26:25.767+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: weather_api_dag.get_weather_data scheduled__2025-02-21T09:00:00+00:00 [queued]>
+[2025-04-06T07:26:25.917+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: weather_api_dag.get_weather_data scheduled__2025-02-21T09:00:00+00:00 [queued]>
+[2025-04-06T07:26:25.928+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2025-04-06T07:26:26.202+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): get_weather_data> on 2025-02-21 09:00:00+00:00
+[2025-04-06T07:26:26.368+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=75975) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-06T07:26:26.387+0000] {standard_task_runner.py:72} INFO - Started process 76090 to run task
+[2025-04-06T07:26:26.360+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'weather_api_dag', 'get_weather_data', 'scheduled__2025-02-21T09:00:00+00:00', '--job-id', '344', '--raw', '--subdir', 'DAGS_FOLDER/weatherAPIDAG.py', '--cfg-path', '/tmp/tmpivwe6o9a']
+[2025-04-06T07:26:26.388+0000] {standard_task_runner.py:105} INFO - Job 344: Subtask get_weather_data
+[2025-04-06T07:26:26.767+0000] {task_command.py:467} INFO - Running <TaskInstance: weather_api_dag.get_weather_data scheduled__2025-02-21T09:00:00+00:00 [running]> on host ab13fcc6a433
+[2025-04-06T07:26:27.642+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='weather_api_dag' AIRFLOW_CTX_TASK_ID='get_weather_data' AIRFLOW_CTX_EXECUTION_DATE='2025-02-21T09:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-02-21T09:00:00+00:00'
+[2025-04-06T07:26:27.643+0000] {logging_mixin.py:190} INFO - Task instance is in running state
+[2025-04-06T07:26:27.655+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: queued
+[2025-04-06T07:26:27.656+0000] {logging_mixin.py:190} INFO - Current task name:get_weather_data state:running start_date:2025-04-06 07:26:25.792825+00:00
+[2025-04-06T07:26:27.656+0000] {logging_mixin.py:190} INFO - Dag name:weather_api_dag and current dag run status:running
+[2025-04-06T07:26:27.657+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2025-04-06T07:26:27.764+0000] {logging_mixin.py:190} INFO - https://api.openweathermap.org/data/2.5/weather?q=bangkok&appid=a721af6b5545eb25497f1edd07d1ee0c&units=metric
+[2025-04-06T07:26:27.777+0000] {logging_mixin.py:190} INFO - {'coord': {'lon': 100.5167, 'lat': 13.75}, 'weather': [{'id': 800, 'main': 'Clear', 'description': 'clear sky', 'icon': '01d'}], 'base': 'stations', 'main': {'temp': 36.06, 'feels_like': 42.4, 'temp_min': 34.94, 'temp_max': 36.64, 'pressure': 1009, 'humidity': 48, 'sea_level': 1009, 'grnd_level': 1008}, 'visibility': 10000, 'wind': {'speed': 5.34, 'deg': 176, 'gust': 5.57}, 'clouds': {'all': 0}, 'dt': 1743923890, 'sys': {'type': 2, 'id': 2093772, 'country': 'TH', 'sunrise': 1743894627, 'sunset': 1743938997}, 'timezone': 25200, 'id': 1609350, 'name': 'Bangkok', 'cod': 200}
+[2025-04-06T07:26:27.778+0000] {python.py:240} INFO - Done. Returned value was: None
+[2025-04-06T07:26:27.940+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2025-04-06T07:26:27.947+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=weather_api_dag, task_id=get_weather_data, run_id=scheduled__2025-02-21T09:00:00+00:00, execution_date=20250221T090000, start_date=20250406T072625, end_date=20250406T072627
+[2025-04-06T07:26:28.025+0000] {logging_mixin.py:190} INFO - Task instance in success state
+[2025-04-06T07:26:28.028+0000] {logging_mixin.py:190} INFO -  Previous state of the Task instance: running
+[2025-04-06T07:26:28.028+0000] {logging_mixin.py:190} INFO - Dag name:weather_api_dag queued_at:2025-04-06 07:26:12.509511+00:00
+[2025-04-06T07:26:28.031+0000] {logging_mixin.py:190} INFO - Task hostname:ab13fcc6a433 operator:PythonOperator
+[2025-04-06T07:26:28.183+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2025-04-06T07:26:28.246+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-06T07:26:28.250+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
